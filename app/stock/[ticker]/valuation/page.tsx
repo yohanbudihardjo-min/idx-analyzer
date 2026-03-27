@@ -2,7 +2,8 @@ import { getFinancials, getStockInfo } from "@/lib/sectors";
 import { runDCF, estimateWACC, formatBillion, formatIDR } from "@/lib/dcf";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AIAnalysis } from "@/components/ai-analysis";
+import dynamic from "next/dynamic";
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })));
 import { cn } from "@/lib/utils";
 import { TrendingUp, TrendingDown } from "lucide-react";
 

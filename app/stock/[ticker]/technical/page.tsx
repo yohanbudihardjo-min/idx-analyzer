@@ -7,10 +7,11 @@ import {
 } from "@/lib/indicators";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CandlestickChart } from "@/components/charts/candlestick-chart";
-import { RSIChart } from "@/components/charts/rsi-chart";
-import { MACDChart } from "@/components/charts/macd-chart";
-import { AIAnalysis } from "@/components/ai-analysis";
+import dynamic from "next/dynamic";
+const CandlestickChart = dynamic(() => import("@/components/charts/candlestick-chart").then(m => ({ default: m.CandlestickChart })));
+const RSIChart = dynamic(() => import("@/components/charts/rsi-chart").then(m => ({ default: m.RSIChart })));
+const MACDChart = dynamic(() => import("@/components/charts/macd-chart").then(m => ({ default: m.MACDChart })));
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })));
 import { cn } from "@/lib/utils";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 

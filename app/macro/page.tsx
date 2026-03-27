@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AIAnalysis } from "@/components/ai-analysis";
-import { MacroCharts } from "./macro-charts";
+import dynamic from "next/dynamic";
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })));
+const MacroCharts = dynamic(() => import("./macro-charts").then(m => ({ default: m.MacroCharts })));
 import { macroData } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { TrendingUp, TrendingDown } from "lucide-react";

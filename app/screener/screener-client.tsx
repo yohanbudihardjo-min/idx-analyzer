@@ -13,7 +13,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { AIAnalysis } from "@/components/ai-analysis";
+import dynamic from "next/dynamic";
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })), { ssr: false });
 import { cn } from "@/lib/utils";
 import { Search, ArrowUpDown, ExternalLink, Filter } from "lucide-react";
 

@@ -1,8 +1,9 @@
 import { getSeasonality, getInsiderTransactions, getStockInfo } from "@/lib/sectors";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AIAnalysis } from "@/components/ai-analysis";
-import { SeasonalityChart } from "@/components/charts/seasonality-chart";
+import dynamic from "next/dynamic";
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })));
+const SeasonalityChart = dynamic(() => import("@/components/charts/seasonality-chart").then(m => ({ default: m.SeasonalityChart })));
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, ArrowDownRight, User } from "lucide-react";
 

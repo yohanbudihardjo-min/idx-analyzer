@@ -1,8 +1,9 @@
 import { getQuarterlyEarnings, getStockInfo } from "@/lib/sectors";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AIAnalysis } from "@/components/ai-analysis";
-import { EarningsChart } from "@/components/charts/earnings-chart";
+import dynamic from "next/dynamic";
+const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })));
+const EarningsChart = dynamic(() => import("@/components/charts/earnings-chart").then(m => ({ default: m.EarningsChart })));
 import { cn } from "@/lib/utils";
 import { CheckCircle2, XCircle, TrendingUp, TrendingDown } from "lucide-react";
 
