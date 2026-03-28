@@ -24,6 +24,7 @@ const frameworks = [
   { id: 10, name: "Macro Dashboard", firm: "McKinsey", href: "/macro", icon: PieChart, desc: "BI Rate, inflasi, PDB, dan dampaknya terhadap saham" },
   { id: 11, name: "Competitive Analysis", firm: "Bain & Company", href: "/competitive", icon: Swords, desc: "Analisis kompetitif sektor: moat, market share, SWOT, dan best pick" },
   { id: 12, name: "Portfolio Builder", firm: "BlackRock", href: "/portfolio", icon: Briefcase, desc: "Bangun portofolio personal: alokasi aset, DCA, rebalancing, dan IPS" },
+  { id: 13, name: "Dividend Income Strategy", firm: "Harvard Endowment", href: "/income", icon: Coins, desc: "Portofolio saham dividen IDX: safety score, DRIP compounding, proyeksi income 10 tahun" },
 ];
 
 export default async function DashboardPage() {

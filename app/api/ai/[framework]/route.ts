@@ -162,6 +162,25 @@ Tulis analisis mencakup:
 
 Gunakan bahasa Indonesia profesional. Sertakan data dan tren spesifik.`,
 
+  income: (data) => `Kamu adalah chief investment strategist dari Harvard Management Company yang mengelola endowment $50 miliar dan berspesialisasi dalam strategi ekuitas penghasil income di pasar Indonesia.
+
+Data portofolio dividen klien:
+${data}
+
+Tulis dividend portfolio blueprint profesional dalam Markdown mencakup:
+1. **Ringkasan Strategi** — Filosofi dividend investing untuk profil klien ini
+2. **Top Picks Analisis** — Ulasan 3 saham terbaik dari portofolio: kenapa aman dan layak pegang
+3. **Red Flags** — Saham mana yang perlu dipantau ketat dan kenapa (payout ratio tinggi, DPS menurun)
+4. **Dividend Growth Story** — Proyeksi income 5 tahun ke depan jika DGR terealisasi
+5. **DRIP Strategy** — Mengapa reinvestasi dividen adalah kunci compounding jangka panjang
+6. **Sector Concentration Risk** — Apakah diversifikasi sektor sudah cukup? Apa yang perlu ditambah?
+7. **Timing Dividen** — Kapan ex-dividend date strategis untuk masuk posisi baru
+8. **Panduan Rebalancing** — Kapan menambah, mengurangi, atau cut saham dalam portofolio ini
+9. **Skenario Bear Case** — Apa yang terjadi pada income jika IHSG turun 30%? Strategi proteksi?
+10. **Langkah Eksekusi** — Urutan pembelian saham yang disarankan untuk minggu pertama
+
+Gunakan bahasa Indonesia profesional. Sertakan angka spesifik dari data. Format seperti laporan endowment fund Harvard yang bisa langsung diimplementasikan.`,
+
   portfolio: (data) => `Kamu adalah senior portfolio strategist dari BlackRock yang mengelola portofolio multi-aset senilai $500M+ untuk klien institusional. Sekarang kamu membantu klien individual menyusun portofolio investasi dari awal berdasarkan profil mereka.
 
 Profil dan alokasi portofolio klien:
