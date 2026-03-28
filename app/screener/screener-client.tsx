@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -16,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 const AIAnalysis = dynamic(() => import("@/components/ai-analysis").then(m => ({ default: m.AIAnalysis })), { ssr: false });
 import { cn } from "@/lib/utils";
-import { Search, ArrowUpDown, ExternalLink, Filter } from "lucide-react";
+import { Search, ArrowUpDown, Filter } from "lucide-react";
 
 interface ScreenerStock {
   ticker: string;
@@ -43,6 +42,7 @@ interface ScreenerClientProps {
 const SECTORS = ["All", "Banking", "Telecommunications", "Industrials", "Technology"];
 
 export function ScreenerClient({ initialStocks }: ScreenerClientProps) {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [sector, setSector] = useState("All");
   const [maxPE, setMaxPE] = useState("");
@@ -251,9 +251,6 @@ export function ScreenerClient({ initialStocks }: ScreenerClientProps) {
                       </span>
                     </th>
                   ))}
-                  <th className="text-xs text-muted-foreground font-normal py-3 px-4 text-right">
-                    Detail
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -265,7 +262,11 @@ export function ScreenerClient({ initialStocks }: ScreenerClientProps) {
                   </tr>
                 ) : (
                   filtered.map((s) => (
-                    <tr key={s.ticker} className="hover:bg-muted/20">
+                    <tr
+                      key={s.ticker}
+                      className="hover:bg-muted/30 cursor-pointer transition-colors"
+                      onClick={() => router.push(`/stock/${s.ticker}`)}
+                    >
                       <td className="px-4 py-3">
                         <p className="font-mono font-semibold">{s.ticker}</p>
                         <p className="text-xs text-muted-foreground truncate max-w-[120px]">
@@ -297,13 +298,6 @@ export function ScreenerClient({ initialStocks }: ScreenerClientProps) {
                         {s.marketCap >= 1000
                           ? `${(s.marketCap / 1000).toFixed(1)}T`
                           : `${s.marketCap.toFixed(0)}B`}
-                      </td>
-                      <td className="px-4 py-3 text-right">
-                        <Link href={`/stock/${s.ticker}`}>
-                          <Button variant="ghost" size="sm" className="h-7 w-7 p-0">
-                            <ExternalLink className="h-3.5 w-3.5" />
-                          </Button>
-                        </Link>
                       </td>
                     </tr>
                   ))
