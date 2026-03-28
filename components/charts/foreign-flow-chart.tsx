@@ -25,18 +25,18 @@ export function ForeignFlowChart({ data }: Props) {
   return (
     <ResponsiveContainer width="100%" height={260}>
       <ComposedChart data={display} margin={{ top: 4, right: 16, left: 0, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+          tick={{ fontSize: 10, fill: "#a1a1aa" }}
           axisLine={false}
           tickLine={false}
-          tickFormatter={(v: string) => v.slice(5)} // show MM-DD
+          tickFormatter={(v: string) => v.slice(5)}
           interval="preserveStartEnd"
         />
         <YAxis
           yAxisId="bar"
-          tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+          tick={{ fontSize: 10, fill: "#a1a1aa" }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(v: number) => `${v}B`}
@@ -44,15 +44,15 @@ export function ForeignFlowChart({ data }: Props) {
         <YAxis
           yAxisId="line"
           orientation="right"
-          tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+          tick={{ fontSize: 10, fill: "#a1a1aa" }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(v: number) => `${v}B`}
         />
         <Tooltip
           contentStyle={{
-            background: "hsl(var(--card))",
-            border: "1px solid hsl(var(--border))",
+            background: "#18181b",
+            border: "1px solid #3f3f46",
             borderRadius: "8px",
             fontSize: "12px",
           }}
@@ -67,14 +67,14 @@ export function ForeignFlowChart({ data }: Props) {
         />
         <Bar yAxisId="bar" dataKey="netBuy" radius={[2, 2, 0, 0]}>
           {display.map((d, i) => (
-            <Cell key={i} fill={d.netBuy >= 0 ? "hsl(var(--chart-2) / 0.7)" : "hsl(var(--destructive) / 0.7)"} />
+            <Cell key={i} fill={d.netBuy >= 0 ? "#22c55e99" : "#ef444499"} />
           ))}
         </Bar>
         <Line
           yAxisId="line"
           type="monotone"
           dataKey="cumulativeNet"
-          stroke="hsl(var(--primary))"
+          stroke="#3b82f6"
           strokeWidth={2}
           dot={false}
         />
@@ -82,3 +82,4 @@ export function ForeignFlowChart({ data }: Props) {
     </ResponsiveContainer>
   );
 }
+
