@@ -162,6 +162,25 @@ Tulis analisis mencakup:
 
 Gunakan bahasa Indonesia profesional. Sertakan data dan tren spesifik.`,
 
+  portfolio: (data) => `Kamu adalah senior portfolio strategist dari BlackRock yang mengelola portofolio multi-aset senilai $500M+ untuk klien institusional. Sekarang kamu membantu klien individual menyusun portofolio investasi dari awal berdasarkan profil mereka.
+
+Profil dan alokasi portofolio klien:
+${data}
+
+Tulis Investment Policy Statement (IPS) profesional satu halaman dalam Markdown, mencakup:
+1. **Profil Investor** — Ringkasan usia, tujuan, horizon, dan risk tolerance
+2. **Alokasi Strategis** — Breakdown aset dengan justifikasi tiap kelas aset
+3. **Instrumen Rekomendasi** — Core holdings vs satellite positions dengan alasan spesifik
+4. **Return & Risiko yang Diharapkan** — Range return tahunan dan max drawdown skenario buruk
+5. **Strategi Rebalancing** — Jadwal dan trigger rules yang jelas
+6. **Rencana DCA** — Distribusi bulanan ke tiap aset secara konkret
+7. **Efisiensi Pajak** — Tips pajak sesuai instrumen yang dipilih (konteks Indonesia)
+8. **Benchmark** — Tolok ukur performa yang tepat untuk profil ini
+9. **Katalis & Risiko** — 3 katalis positif dan 3 risiko utama dalam 12 bulan ke depan
+10. **Panduan Eksekusi** — Langkah konkret minggu pertama untuk memulai
+
+Gunakan bahasa Indonesia profesional. Sertakan angka spesifik. Format seperti dokumen IPS resmi BlackRock yang bisa langsung diikuti klien.`,
+
   competitive: (data) => `Kamu adalah senior partner dari Bain & Company yang sedang menyusun laporan competitive strategy untuk fund investasi besar yang mengevaluasi suatu industri di Indonesia.
 
 Data sektor dan kompetitor:

@@ -7,7 +7,7 @@ import { USE_MOCK } from "@/lib/sectors";
 import {
   TrendingUp, TrendingDown,
   BarChart3, LineChart, DollarSign, PieChart,
-  Activity, Search, Zap, GitCompare, Coins, ShieldAlert, Globe2, Swords
+  Activity, Search, Zap, GitCompare, Coins, ShieldAlert, Globe2, Swords, Briefcase
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,7 @@ const frameworks = [
   { id: 9, name: "Pattern Finder", firm: "Renaissance", href: "/stock/BBCA/patterns", icon: Activity, desc: "Seasonality, insider transactions, pola statistik tersembunyi" },
   { id: 10, name: "Macro Dashboard", firm: "McKinsey", href: "/macro", icon: PieChart, desc: "BI Rate, inflasi, PDB, dan dampaknya terhadap saham" },
   { id: 11, name: "Competitive Analysis", firm: "Bain & Company", href: "/competitive", icon: Swords, desc: "Analisis kompetitif sektor: moat, market share, SWOT, dan best pick" },
+  { id: 12, name: "Portfolio Builder", firm: "BlackRock", href: "/portfolio", icon: Briefcase, desc: "Bangun portofolio personal: alokasi aset, DCA, rebalancing, dan IPS" },
 ];
 
 export default async function DashboardPage() {
