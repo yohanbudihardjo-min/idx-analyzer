@@ -10,6 +10,9 @@ const tabs = [
   { label: "Valuation", href: "/valuation", firm: "Morgan Stanley" },
   { label: "Earnings", href: "/earnings", firm: "JPMorgan" },
   { label: "Patterns", href: "/patterns", firm: "Renaissance" },
+  { label: "Dividend", href: "/dividend", firm: "Fidelity" },
+  { label: "Risk", href: "/risk", firm: "Bridgewater" },
+  { label: "Foreign", href: "/foreign", firm: "CLSA" },
 ];
 
 export function StockTabNav({ ticker }: { ticker: string }) {

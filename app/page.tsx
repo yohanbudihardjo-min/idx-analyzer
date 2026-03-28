@@ -7,15 +7,19 @@ import { USE_MOCK } from "@/lib/sectors";
 import {
   TrendingUp, TrendingDown,
   BarChart3, LineChart, DollarSign, PieChart,
-  Activity, Search, Zap
+  Activity, Search, Zap, GitCompare, Coins, ShieldAlert, Globe2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const frameworks = [
   { id: 1, name: "Stock Screener", firm: "Goldman Sachs", href: "/screener", icon: Search, desc: "Filter saham IDX berdasarkan P/E, ROE, dividen, dan growth" },
   { id: 2, name: "DCF Valuation", firm: "Morgan Stanley", href: "/stock/BBCA/valuation", icon: DollarSign, desc: "Model valuasi DCF dengan WACC dan sensitivity table" },
+  { id: 3, name: "Stock Comparison", firm: "Goldman Sachs", href: "/compare", icon: GitCompare, desc: "Bandingkan 5 saham IDX secara side-by-side berdasarkan fundamental" },
   { id: 4, name: "Earnings Analyzer", firm: "JPMorgan", href: "/stock/BBCA/earnings", icon: BarChart3, desc: "Analisis pre-earnings, beat/miss history, dan rekomendasi" },
+  { id: 5, name: "Dividend Analyzer", firm: "Fidelity", href: "/stock/BBCA/dividend", icon: Coins, desc: "Riwayat dividen, yield, payout ratio, dan CAGR dividen" },
   { id: 6, name: "Technical Analysis", firm: "Citadel", href: "/stock/BBCA/technical", icon: LineChart, desc: "Candlestick + MA + RSI + MACD + support/resistance" },
+  { id: 7, name: "Risk Dashboard", firm: "Bridgewater", href: "/stock/BBCA/risk", icon: ShieldAlert, desc: "Beta, volatilitas, max drawdown, VaR, dan Sharpe ratio" },
+  { id: 8, name: "Foreign Flow", firm: "CLSA", href: "/stock/BBCA/foreign", icon: Globe2, desc: "Net foreign buy/sell, kepemilikan asing, sinyal akumulasi/distribusi" },
   { id: 9, name: "Pattern Finder", firm: "Renaissance", href: "/stock/BBCA/patterns", icon: Activity, desc: "Seasonality, insider transactions, pola statistik tersembunyi" },
   { id: 10, name: "Macro Dashboard", firm: "McKinsey", href: "/macro", icon: PieChart, desc: "BI Rate, inflasi, PDB, dan dampaknya terhadap saham" },
 ];

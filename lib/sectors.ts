@@ -13,6 +13,8 @@ import {
   ohlcvData,
   insiderTransactions,
   seasonalityData,
+  dividendData,
+  foreignFlowData,
   allStocks,
   marketOverview,
   type StockInfo,
@@ -21,6 +23,8 @@ import {
   type OHLCVData,
   type InsiderTransaction,
   type SeasonalityData,
+  type DividendHistory,
+  type ForeignFlowData,
 } from "./mock-data";
 
 const USE_MOCK = !process.env.SECTORS_API_KEY;
@@ -115,6 +119,22 @@ export async function getScreenerData(filters?: {
   if (filters?.maxPE) params.set("where", `pe <= ${filters.maxPE}`);
   const data = await fetchSectors(`/companies/?${params}`);
   return data;
+}
+
+export async function getDividendHistory(ticker: string): Promise<DividendHistory[]> {
+  const t = getDefaultTicker(ticker);
+  if (USE_MOCK) return dividendData[t] ?? dividendData.BBCA;
+
+  const data = await fetchSectors(`/companies/${t}/dividends`);
+  return data as DividendHistory[];
+}
+
+export async function getForeignFlow(ticker: string): Promise<ForeignFlowData[]> {
+  const t = getDefaultTicker(ticker);
+  if (USE_MOCK) return foreignFlowData[t] ?? foreignFlowData.BBCA;
+
+  const data = await fetchSectors(`/companies/${t}/foreign-flow`);
+  return data as ForeignFlowData[];
 }
 
 export async function getMarketOverview() {

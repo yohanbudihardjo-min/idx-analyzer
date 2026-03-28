@@ -76,6 +76,21 @@ export interface SeasonalityData {
   avgVolume: number;
 }
 
+export interface DividendHistory {
+  year: string;
+  dps: number;         // IDR per saham
+  yield: number;       // %
+  payoutRatio: number; // %
+  exDate: string;
+}
+
+export interface ForeignFlowData {
+  date: string;
+  netBuy: number;           // miliar IDR, positif = beli
+  cumulativeNet: number;    // running total miliar IDR
+  foreignOwnership: number; // % kepemilikan asing
+}
+
 // ─── STOCK INFO ─────────────────────────────────────────────────────────────
 
 export const stockInfo: Record<string, StockInfo> = {
@@ -473,6 +488,85 @@ export const macroData = {
     { date: "2025-01", cpi: 0.76 }, { date: "2025-02", cpi: 0.09 },
     { date: "2025-03", cpi: 1.03 },
   ],
+};
+
+// ─── DIVIDEND HISTORY ─────────────────────────────────────────────────────────
+
+export const dividendData: Record<string, DividendHistory[]> = {
+  BBCA: [
+    { year: "2020", dps: 130, yield: 1.4, payoutRatio: 32.8, exDate: "2020-06-15" },
+    { year: "2021", dps: 150, yield: 1.6, payoutRatio: 37.8, exDate: "2021-06-18" },
+    { year: "2022", dps: 170, yield: 1.7, payoutRatio: 38.5, exDate: "2022-06-17" },
+    { year: "2023", dps: 185, yield: 1.8, payoutRatio: 38.9, exDate: "2023-06-16" },
+    { year: "2024", dps: 210, yield: 2.1, payoutRatio: 39.7, exDate: "2024-06-14" },
+  ],
+  TLKM: [
+    { year: "2020", dps: 148, yield: 4.2, payoutRatio: 71.2, exDate: "2020-06-10" },
+    { year: "2021", dps: 162, yield: 4.5, payoutRatio: 65.5, exDate: "2021-06-09" },
+    { year: "2022", dps: 168, yield: 4.8, payoutRatio: 69.2, exDate: "2022-06-08" },
+    { year: "2023", dps: 172, yield: 5.0, payoutRatio: 70.2, exDate: "2023-06-07" },
+    { year: "2024", dps: 178, yield: 5.8, payoutRatio: 71.5, exDate: "2024-06-12" },
+  ],
+  ASII: [
+    { year: "2020", dps: 135, yield: 2.8, payoutRatio: 28.6, exDate: "2020-06-22" },
+    { year: "2021", dps: 188, yield: 3.5, payoutRatio: 32.3, exDate: "2021-06-21" },
+    { year: "2022", dps: 220, yield: 3.9, payoutRatio: 36.4, exDate: "2022-06-20" },
+    { year: "2023", dps: 235, yield: 4.1, payoutRatio: 37.2, exDate: "2023-06-19" },
+    { year: "2024", dps: 248, yield: 4.4, payoutRatio: 37.8, exDate: "2024-06-17" },
+  ],
+  BMRI: [
+    { year: "2020", dps: 157, yield: 3.8, payoutRatio: 60.2, exDate: "2020-06-08" },
+    { year: "2021", dps: 196, yield: 4.5, payoutRatio: 60.9, exDate: "2021-06-07" },
+    { year: "2022", dps: 282, yield: 5.2, payoutRatio: 61.0, exDate: "2022-06-06" },
+    { year: "2023", dps: 315, yield: 5.6, payoutRatio: 61.8, exDate: "2023-06-05" },
+    { year: "2024", dps: 348, yield: 6.2, payoutRatio: 62.5, exDate: "2024-06-10" },
+  ],
+  GOTO: [
+    { year: "2020", dps: 0, yield: 0, payoutRatio: 0, exDate: "-" },
+    { year: "2021", dps: 0, yield: 0, payoutRatio: 0, exDate: "-" },
+    { year: "2022", dps: 0, yield: 0, payoutRatio: 0, exDate: "-" },
+    { year: "2023", dps: 0, yield: 0, payoutRatio: 0, exDate: "-" },
+    { year: "2024", dps: 0, yield: 0, payoutRatio: 0, exDate: "-" },
+  ],
+};
+
+// ─── FOREIGN FLOW DATA ────────────────────────────────────────────────────────
+
+function generateForeignFlow(
+  baseOwnership: number,
+  trend: number,
+  volatility: number
+): ForeignFlowData[] {
+  const data: ForeignFlowData[] = [];
+  let cumulative = 0;
+  let ownership = baseOwnership;
+  const start = new Date("2024-10-01");
+
+  for (let i = 0; i < 90; i++) {
+    const date = new Date(start);
+    date.setDate(start.getDate() + i);
+    if (date.getDay() === 0 || date.getDay() === 6) continue;
+
+    const netBuy = Math.round((Math.random() - 0.5 + trend) * volatility * 10) / 10;
+    cumulative = Math.round((cumulative + netBuy) * 10) / 10;
+    ownership = Math.min(99, Math.max(1, Math.round((ownership + netBuy * 0.001) * 10) / 10));
+
+    data.push({
+      date: date.toISOString().split("T")[0],
+      netBuy,
+      cumulativeNet: cumulative,
+      foreignOwnership: ownership,
+    });
+  }
+  return data;
+}
+
+export const foreignFlowData: Record<string, ForeignFlowData[]> = {
+  BBCA: generateForeignFlow(47.8, 0.05, 8),
+  TLKM: generateForeignFlow(28.4, -0.02, 6),
+  ASII: generateForeignFlow(35.2, 0.01, 10),
+  BMRI: generateForeignFlow(32.1, 0.03, 9),
+  GOTO: generateForeignFlow(52.6, -0.08, 15),
 };
 
 // ─── SCREENER DATA ────────────────────────────────────────────────────────────

@@ -98,6 +98,70 @@ Tulis analisis mencakup:
 
 Gunakan bahasa Indonesia profesional.`,
 
+  compare: (data) => `Kamu adalah portfolio manager senior dari Goldman Sachs dengan spesialisasi stock selection dan komparasi saham Indonesia (IDX/BEI).
+Berikan analisis komparasi mendalam untuk daftar saham Indonesia berikut.
+
+Data komparasi:
+${data}
+
+Tulis analisis mencakup:
+1. **Ranking Keseluruhan** — Peringkat saham dari terbaik ke terburuk berdasarkan kombinasi metrik
+2. **Value Champion** — Saham paling undervalued berdasarkan P/E, P/B, dan EV/EBITDA
+3. **Quality Champion** — Saham dengan fundamental terbaik (ROE, ROA, margin)
+4. **Dividend Champion** — Saham dengan dividend yield + pertumbuhan dividen terbaik
+5. **Growth vs Value Trade-off** — Analisis risk/reward masing-masing saham
+6. **Rekomendasi Alokasi** — Bobot ideal portofolio untuk kombinasi saham-saham ini
+
+Gunakan bahasa Indonesia profesional. Sertakan angka spesifik dari data.`,
+
+  dividend: (data) => `Kamu adalah dividend analyst senior dari Fidelity Investments dengan spesialisasi income investing di pasar saham Indonesia (IDX/BEI).
+Berikan analisis dividen mendalam untuk saham Indonesia berikut.
+
+Data dividen:
+${data}
+
+Tulis analisis mencakup:
+1. **Dividend Quality** — Konsistensi, pertumbuhan, dan keberlanjutan dividen
+2. **Yield Analysis** — Yield saat ini vs historis, apakah sustainable?
+3. **Payout Ratio** — Apakah rasio pembayaran sehat? Ruang untuk kenaikan?
+4. **Dividend Growth Rate** — CAGR dividen 3-5 tahun, proyeksi ke depan
+5. **Income Strategy** — Kapan waktu terbaik beli untuk mendapatkan dividen optimal?
+6. **Rekomendasi** — Buy for income / Hold / Reduce dengan target yield entry
+
+Gunakan bahasa Indonesia profesional. Sertakan angka dan persentase spesifik.`,
+
+  risk: (data) => `Kamu adalah risk strategist senior dari Bridgewater Associates dengan spesialisasi quantitative risk management di emerging markets.
+Berikan analisis risiko mendalam untuk saham Indonesia (IDX/BEI) berikut.
+
+Data risiko:
+${data}
+
+Tulis analisis mencakup:
+1. **Risk Profile Summary** — Low/Medium/High dengan justifikasi kuantitatif
+2. **Volatility Analysis** — Interpretasi volatilitas vs sektor dan IHSG
+3. **Drawdown Risk** — Skenario worst-case berdasarkan max drawdown historis
+4. **Beta Interpretation** — Sensitivitas vs market, implikasi saat IHSG naik/turun
+5. **Risk-Adjusted Return** — Apakah Sharpe ratio cukup baik untuk risikonya?
+6. **Risk Management** — Position sizing, stop-loss level, dan hedging yang disarankan
+
+Gunakan bahasa Indonesia profesional. Sertakan angka dan statistik spesifik.`,
+
+  foreign: (data) => `Kamu adalah emerging market analyst senior dari CLSA dengan spesialisasi foreign investor flow analysis di Bursa Efek Indonesia (IDX/BEI).
+Berikan analisis foreign flow mendalam untuk saham Indonesia berikut.
+
+Data foreign flow:
+${data}
+
+Tulis analisis mencakup:
+1. **Tren Asing** — Apakah asing sedang akumulasi atau distribusi? Intensitasnya?
+2. **Ownership Analysis** — Level kepemilikan asing saat ini: tinggi/rendah vs historis
+3. **Sinyal Institusional** — Apa yang bisa disimpulkan dari pola beli/jual asing?
+4. **Katalis Flow** — Faktor makro/mikro yang memengaruhi keputusan investor asing
+5. **Divergence Analysis** — Apakah asing dan domestik bergerak berlawanan? Implikasinya?
+6. **Trading Strategy** — Follow the foreign atau contrarian? Dengan level entry/exit
+
+Gunakan bahasa Indonesia profesional. Sertakan data dan tren spesifik.`,
+
   macro: (data) => `Kamu adalah macro strategist dari McKinsey dengan spesialisasi Indonesia macro analysis.
 Berikan analisis makro mendalam untuk kondisi ekonomi Indonesia berikut.
 
