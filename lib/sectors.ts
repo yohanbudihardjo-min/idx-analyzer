@@ -15,6 +15,7 @@ import {
   seasonalityData,
   dividendData,
   foreignFlowData,
+  competitiveData,
   allStocks,
   marketOverview,
   type StockInfo,
@@ -25,6 +26,7 @@ import {
   type SeasonalityData,
   type DividendHistory,
   type ForeignFlowData,
+  type SectorCompetitiveData,
 } from "./mock-data";
 
 const USE_MOCK = !process.env.SECTORS_API_KEY;
@@ -144,4 +146,12 @@ export async function getMarketOverview() {
   return data;
 }
 
+export async function getAllCompetitiveData(): Promise<SectorCompetitiveData[]> {
+  if (USE_MOCK) return competitiveData;
+
+  // Live: fetch sector peer comparison from sectors.app
+  return competitiveData; // fallback to mock until API endpoint is mapped
+}
+
 export { USE_MOCK };
+export type { SectorCompetitiveData };

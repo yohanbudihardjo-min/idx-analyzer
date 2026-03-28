@@ -91,6 +91,222 @@ export interface ForeignFlowData {
   foreignOwnership: number; // % kepemilikan asing
 }
 
+// ─── COMPETITIVE ANALYSIS ────────────────────────────────────────────────────
+
+export interface CompetitorData {
+  ticker: string;
+  name: string;
+  marketCap: number;        // triliun IDR
+  revenue: number;          // miliar IDR
+  revenueGrowth: number;    // % YoY
+  grossMargin: number;      // %
+  netMargin: number;        // %
+  roe: number;              // %
+  pe: number | null;
+  moat: {
+    brand: number;     // 1-5
+    cost: number;      // 1-5
+    network: number;   // 1-5
+    switching: number; // 1-5
+  };
+  marketShare: { year: string; share: number }[];
+  managementRating: number; // 1-10
+  rdSpendingPct: number;    // % of revenue
+  swot?: {
+    strengths: string[];
+    weaknesses: string[];
+    opportunities: string[];
+    threats: string[];
+  };
+}
+
+export interface SectorCompetitiveData {
+  sector: string;
+  sectorDescription: string;
+  threats: { title: string; detail: string }[];
+  competitors: CompetitorData[];
+}
+
+export const competitiveData: SectorCompetitiveData[] = [
+  {
+    sector: "Perbankan",
+    sectorDescription: "Sektor perbankan Indonesia dikuasai oleh bank-bank BUKU 4 dengan total aset >Rp1.000 triliun. Persaingan semakin ketat dengan masuknya bank digital.",
+    threats: [
+      { title: "Kenaikan NPL", detail: "Tekanan kredit macet pasca pandemi terutama di segmen UMKM dan konsumer" },
+      { title: "Disrupsi Fintech", detail: "P2P lending dan neobank menggerus fee-based income dan segmen kredit ritel" },
+      { title: "Tekanan NIM", detail: "Normalisasi suku bunga BI menekan net interest margin seluruh industri" },
+      { title: "Regulasi Modal", detail: "Pengetatan KPMM dan persyaratan likuiditas Basel III meningkatkan cost of capital" },
+    ],
+    competitors: [
+      {
+        ticker: "BBCA", name: "Bank Central Asia", marketCap: 878, revenue: 91200,
+        revenueGrowth: 12.4, grossMargin: 68.5, netMargin: 42.1, roe: 23.4, pe: 24.8,
+        moat: { brand: 5, cost: 4, network: 5, switching: 5 },
+        marketShare: [{ year: "2022", share: 12.1 }, { year: "2023", share: 12.5 }, { year: "2024", share: 13.0 }],
+        managementRating: 9.2, rdSpendingPct: 3.1,
+        swot: {
+          strengths: ["CASA ratio tertinggi industri (>80%)", "Brand loyalty dan jaringan ATM terluas", "Cost of fund terendah"],
+          weaknesses: ["Valuasi premium vs peers (P/B 5x)", "Eksposur UMKM rendah, growth terbatas"],
+          opportunities: ["Ekspansi layanan wealth management", "Cross-selling ke 37 juta nasabah"],
+          threats: ["Neobank mengincar nasabah muda", "Kompresi NIM jika BI Rate turun"],
+        },
+      },
+      {
+        ticker: "BBRI", name: "Bank Rakyat Indonesia", marketCap: 522, revenue: 152400,
+        revenueGrowth: 15.2, grossMargin: 62.1, netMargin: 31.8, roe: 19.6, pe: 12.4,
+        moat: { brand: 4, cost: 3, network: 5, switching: 3 },
+        marketShare: [{ year: "2022", share: 15.2 }, { year: "2023", share: 15.7 }, { year: "2024", share: 16.1 }],
+        managementRating: 8.1, rdSpendingPct: 2.4,
+        swot: {
+          strengths: ["Market leader UMKM dengan 70+ juta rekening", "Jaringan terluas (10.000+ unit kerja)", "Dukungan pemerintah sebagai BUMN"],
+          weaknesses: ["NPL lebih tinggi vs BBCA", "Cost-to-income ratio relatif besar"],
+          opportunities: ["BRI Insurance dan BRI Finance sinergi group", "KUR terus tumbuh didukung pemerintah"],
+          threats: ["Kredit macet UMKM pasca normalisasi", "Kompetisi P2P lending di segmen mikro"],
+        },
+      },
+      {
+        ticker: "BMRI", name: "Bank Mandiri", marketCap: 385, revenue: 108600,
+        revenueGrowth: 13.8, grossMargin: 63.4, netMargin: 35.2, roe: 18.7, pe: 11.2,
+        moat: { brand: 4, cost: 3, network: 4, switching: 4 },
+        marketShare: [{ year: "2022", share: 14.1 }, { year: "2023", share: 14.5 }, { year: "2024", share: 14.8 }],
+        managementRating: 8.4, rdSpendingPct: 2.8,
+      },
+      {
+        ticker: "BBNI", name: "Bank Negara Indonesia", marketCap: 178, revenue: 72100,
+        revenueGrowth: 9.6, grossMargin: 58.2, netMargin: 26.4, roe: 14.2, pe: 8.7,
+        moat: { brand: 3, cost: 3, network: 4, switching: 3 },
+        marketShare: [{ year: "2022", share: 9.0 }, { year: "2023", share: 9.2 }, { year: "2024", share: 9.5 }],
+        managementRating: 7.5, rdSpendingPct: 2.1,
+      },
+      {
+        ticker: "BRIS", name: "Bank Syariah Indonesia", marketCap: 58, revenue: 22800,
+        revenueGrowth: 18.4, grossMargin: 52.1, netMargin: 19.8, roe: 16.3, pe: 18.6,
+        moat: { brand: 3, cost: 2, network: 3, switching: 4 },
+        marketShare: [{ year: "2022", share: 3.1 }, { year: "2023", share: 3.6 }, { year: "2024", share: 4.2 }],
+        managementRating: 7.2, rdSpendingPct: 1.8,
+      },
+    ],
+  },
+  {
+    sector: "Telekomunikasi",
+    sectorDescription: "Industri telekomunikasi Indonesia didominsai Telkom sebagai BUMN dengan subsidiary Telkomsel. Konsolidasi ISAT-Hutchison menciptakan pesaing kedua yang signifikan.",
+    threats: [
+      { title: "Perang Harga Data", detail: "Harga data seluler terus turun, menekan ARPU (average revenue per user) seluruh operator" },
+      { title: "Saturasi Pelanggan", detail: "Penetrasi seluler >120%, pertumbuhan pelanggan baru hampir stagnan di pulau Jawa" },
+      { title: "Regulasi Spektrum", detail: "Biaya lisensi frekuensi 5G sangat besar, berpotensi menekan capex dan profitabilitas" },
+      { title: "OTT Substitution", detail: "WhatsApp, Telegram menggantikan SMS; streaming menggantikan voice — erosi legacy revenue" },
+    ],
+    competitors: [
+      {
+        ticker: "TLKM", name: "Telkom Indonesia", marketCap: 312, revenue: 149200,
+        revenueGrowth: 4.2, grossMargin: 54.8, netMargin: 17.1, roe: 21.5, pe: 13.2,
+        moat: { brand: 5, cost: 5, network: 5, switching: 4 },
+        marketShare: [{ year: "2022", share: 56.2 }, { year: "2023", share: 55.1 }, { year: "2024", share: 54.3 }],
+        managementRating: 7.8, rdSpendingPct: 4.2,
+        swot: {
+          strengths: ["Monopoli infrastruktur fiber dan tower melalui Mitratel", "Telkomsel 170 juta pelanggan aktif", "Diversifikasi ke cloud dan data center"],
+          weaknesses: ["Birokrasi BUMN memperlambat inovasi", "Legacy fixed-line menurun terus"],
+          opportunities: ["IndiHome 5G dan enterprise connectivity", "Data center tumbuh seiring cloud adoption"],
+          threats: ["ISAT pasca merger lebih kompetitif", "Regulasi harga interkoneksi"],
+        },
+      },
+      {
+        ticker: "ISAT", name: "Indosat Ooredoo Hutchison", marketCap: 68, revenue: 52400,
+        revenueGrowth: 8.6, grossMargin: 46.2, netMargin: 7.8, roe: 8.9, pe: 22.1,
+        moat: { brand: 3, cost: 3, network: 4, switching: 3 },
+        marketShare: [{ year: "2022", share: 19.8 }, { year: "2023", share: 21.1 }, { year: "2024", share: 22.4 }],
+        managementRating: 7.4, rdSpendingPct: 3.8,
+        swot: {
+          strengths: ["Sinergi merger Indosat + Hutchison mengurangi duplikasi biaya", "Pangsa pasar #2 dengan momentum naik"],
+          weaknesses: ["Leverage tinggi pasca merger", "Integrasi sistem masih berjalan"],
+          opportunities: ["Konsolidasi jaringan hemat capex Rp7T+/tahun", "5G enterprise solutions"],
+          threats: ["Telkomsel mempertahankan dominasi agresif", "Churn pelanggan pasca migrasi nomor"],
+        },
+      },
+      {
+        ticker: "EXCL", name: "XL Axiata", marketCap: 29, revenue: 30800,
+        revenueGrowth: 5.1, grossMargin: 44.6, netMargin: 5.2, roe: 7.1, pe: 19.4,
+        moat: { brand: 3, cost: 2, network: 3, switching: 2 },
+        marketShare: [{ year: "2022", share: 12.1 }, { year: "2023", share: 11.8 }, { year: "2024", share: 11.4 }],
+        managementRating: 6.8, rdSpendingPct: 3.1,
+      },
+      {
+        ticker: "MTEL", name: "Mitratel (Telkom Infra)", marketCap: 47, revenue: 8200,
+        revenueGrowth: 11.4, grossMargin: 72.1, netMargin: 29.6, roe: 8.2, pe: 28.6,
+        moat: { brand: 3, cost: 4, network: 4, switching: 5 },
+        marketShare: [{ year: "2022", share: 3.1 }, { year: "2023", share: 4.0 }, { year: "2024", share: 4.8 }],
+        managementRating: 7.6, rdSpendingPct: 1.2,
+      },
+      {
+        ticker: "TBIG", name: "Tower Bersama Infrastructure", marketCap: 24, revenue: 6900,
+        revenueGrowth: 8.2, grossMargin: 74.8, netMargin: 22.4, roe: 11.8, pe: 24.1,
+        moat: { brand: 2, cost: 4, network: 3, switching: 5 },
+        marketShare: [{ year: "2022", share: 2.6 }, { year: "2023", share: 3.0 }, { year: "2024", share: 3.4 }],
+        managementRating: 7.2, rdSpendingPct: 0.8,
+      },
+    ],
+  },
+  {
+    sector: "Konsumer",
+    sectorDescription: "Sektor konsumer Indonesia diuntungkan oleh populasi 280 juta jiwa dan kelas menengah yang terus tumbuh. Tekanan inflasi dan perubahan perilaku konsumen menjadi tantangan utama.",
+    threats: [
+      { title: "Inflasi Input Cost", detail: "Kenaikan harga CPO, terigu, dan kemasan menekan gross margin produsen FMCG" },
+      { title: "Pergeseran ke Private Label", detail: "Minimarket besar meluncurkan produk private label yang menggerus brand nasional" },
+      { title: "E-commerce Disruption", detail: "Penjualan online mengubah rantai distribusi, memangkas peran distributor tradisional" },
+      { title: "Regulasi Cukai", detail: "Kenaikan cukai rokok memukul volume HMSP; potensi aturan gula tambahan ancam FMCG" },
+    ],
+    competitors: [
+      {
+        ticker: "ASII", name: "Astra International", marketCap: 195, revenue: 284600,
+        revenueGrowth: 6.8, grossMargin: 18.4, netMargin: 7.2, roe: 17.8, pe: 12.1,
+        moat: { brand: 5, cost: 4, network: 5, switching: 3 },
+        marketShare: [{ year: "2022", share: 51.2 }, { year: "2023", share: 51.0 }, { year: "2024", share: 50.4 }],
+        managementRating: 8.8, rdSpendingPct: 1.4,
+        swot: {
+          strengths: ["Konglomerat terdiversifikasi: otomotif, keuangan, tambang, agri", "Toyota dan Honda distributor eksklusif", "Cash flow sangat kuat dan konsisten"],
+          weaknesses: ["Eksposur tinggi ke siklus otomotif", "Kompleksitas group membebani valuasi"],
+          opportunities: ["EV distribution partnership Toyota BZ series", "Pertumbuhan heavy equipment seiring IKN"],
+          threats: ["Mobil listrik China masuk pasar dengan harga lebih murah", "Siklus kredit otomotif memburuk"],
+        },
+      },
+      {
+        ticker: "ICBP", name: "Indofood CBP Sukses Makmur", marketCap: 63, revenue: 64800,
+        revenueGrowth: 9.2, grossMargin: 38.4, netMargin: 10.1, roe: 21.8, pe: 14.6,
+        moat: { brand: 5, cost: 4, network: 4, switching: 3 },
+        marketShare: [{ year: "2022", share: 24.8 }, { year: "2023", share: 25.4 }, { year: "2024", share: 26.1 }],
+        managementRating: 8.2, rdSpendingPct: 1.8,
+        swot: {
+          strengths: ["Indomie — brand mie instan #1 dunia, dijual di 100+ negara", "Distribusi ke 1 juta+ outlet seluruh Indonesia"],
+          weaknesses: ["Leverage dari akuisisi Pinehill (Timur Tengah) masih tinggi"],
+          opportunities: ["Ekspansi Indomie ke pasar Afrika dan Eropa", "Premiumisasi produk snack"],
+          threats: ["Kenaikan harga gandum impor", "Kompetisi dari Nissin dan brand lokal"],
+        },
+      },
+      {
+        ticker: "HMSP", name: "HM Sampoerna", marketCap: 96, revenue: 106200,
+        revenueGrowth: -3.2, grossMargin: 24.8, netMargin: 11.4, roe: 78.4, pe: 18.2,
+        moat: { brand: 5, cost: 3, network: 4, switching: 4 },
+        marketShare: [{ year: "2022", share: 30.1 }, { year: "2023", share: 29.2 }, { year: "2024", share: 28.4 }],
+        managementRating: 7.6, rdSpendingPct: 0.8,
+      },
+      {
+        ticker: "UNVR", name: "Unilever Indonesia", marketCap: 38, revenue: 39800,
+        revenueGrowth: -2.8, grossMargin: 52.1, netMargin: 12.2, roe: 49.8, pe: 21.4,
+        moat: { brand: 5, cost: 3, network: 4, switching: 3 },
+        marketShare: [{ year: "2022", share: 20.4 }, { year: "2023", share: 19.1 }, { year: "2024", share: 18.2 }],
+        managementRating: 6.4, rdSpendingPct: 2.2,
+      },
+      {
+        ticker: "MYOR", name: "Mayora Indah", marketCap: 22, revenue: 29400,
+        revenueGrowth: 11.6, grossMargin: 28.4, netMargin: 8.1, roe: 16.2, pe: 16.8,
+        moat: { brand: 3, cost: 3, network: 3, switching: 2 },
+        marketShare: [{ year: "2022", share: 15.1 }, { year: "2023", share: 16.0 }, { year: "2024", share: 17.2 }],
+        managementRating: 7.4, rdSpendingPct: 1.6,
+      },
+    ],
+  },
+];
+
 // ─── STOCK INFO ─────────────────────────────────────────────────────────────
 
 export const stockInfo: Record<string, StockInfo> = {

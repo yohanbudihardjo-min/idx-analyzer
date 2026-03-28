@@ -162,6 +162,23 @@ Tulis analisis mencakup:
 
 Gunakan bahasa Indonesia profesional. Sertakan data dan tren spesifik.`,
 
+  competitive: (data) => `Kamu adalah senior partner dari Bain & Company yang sedang menyusun laporan competitive strategy untuk fund investasi besar yang mengevaluasi suatu industri di Indonesia.
+
+Data sektor dan kompetitor:
+${data}
+
+Tulis analisis dalam format Bain-style competitive strategy deck summary mencakup:
+1. **Landscape Overview** — Struktur industri, siapa pemain dominan, dan apa basis persaingannya
+2. **Competitive Positioning Map** — Siapa leader, challenger, follower, niche player? Berdasarkan data
+3. **Moat Comparison** — Bandingkan keunggulan kompetitif tiap perusahaan (brand, cost, network, switching)
+4. **Market Share Dynamics** — Siapa yang menang/kalah pangsa pasar 3 tahun terakhir dan mengapa?
+5. **Management Quality** — Siapa manajemen terbaik berdasarkan capital allocation dan track record?
+6. **Sektor Threats** — 3 ancaman terbesar industri dan siapa yang paling rentan/imun?
+7. **Single Best Pick** — Satu saham terbaik untuk dibeli sekarang dengan rationale yang jelas
+8. **Katalis 12 Bulan** — 3 katalis yang bisa menggerakkan saham pilihan dalam 12 bulan ke depan
+
+Gunakan bahasa Indonesia profesional. Sertakan angka spesifik dari data. Format seperti deck consulting dengan bullet points tajam.`,
+
   macro: (data) => `Kamu adalah macro strategist dari McKinsey dengan spesialisasi Indonesia macro analysis.
 Berikan analisis makro mendalam untuk kondisi ekonomi Indonesia berikut.
 
