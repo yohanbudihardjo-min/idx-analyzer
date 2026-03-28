@@ -52,6 +52,7 @@ export function SeasonalityChart({
             border: "1px solid #3f3f46",
             borderRadius: "8px",
             fontSize: "12px",
+            color: "#f4f4f5",
           }}
           formatter={(value: number, name: string) => [
             name === "return" ? `${value.toFixed(2)}%` : `${value.toFixed(0)}%`,
