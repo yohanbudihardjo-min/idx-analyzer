@@ -25,6 +25,7 @@ const frameworks = [
   { id: 11, name: "Competitive Analysis", firm: "Bain & Company", href: "/competitive", icon: Swords, desc: "Analisis kompetitif sektor: moat, market share, SWOT, dan best pick" },
   { id: 12, name: "Portfolio Builder", firm: "BlackRock", href: "/portfolio", icon: Briefcase, desc: "Bangun portofolio personal: alokasi aset, DCA, rebalancing, dan IPS" },
   { id: 13, name: "Dividend Income Strategy", firm: "Harvard Endowment", href: "/income", icon: Coins, desc: "Portofolio saham dividen IDX: safety score, DRIP compounding, proyeksi income 10 tahun" },
+  { id: 14, name: "Portfolio Risk Assessment", firm: "Bridgewater", href: "/portfolio/risk", icon: ShieldAlert, desc: "Korelasi, stress test, tail risk, konsentrasi sektor, hedging, dan rebalancing portofolio" },
 ];
 
 export default async function DashboardPage() {

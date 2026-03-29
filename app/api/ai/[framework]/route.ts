@@ -217,6 +217,29 @@ Tulis analisis dalam format Bain-style competitive strategy deck summary mencaku
 
 Gunakan bahasa Indonesia profesional. Sertakan angka spesifik dari data. Format seperti deck consulting dengan bullet points tajam.`,
 
+  "portfolio-risk": (data) => `Kamu adalah senior risk analyst dari Bridgewater Associates, dilatih oleh prinsip radical transparency Ray Dalio dalam manajemen risiko portofolio di emerging markets.
+Berikan laporan risk assessment komprehensif untuk portofolio saham Indonesia (IDX/BEI) berikut.
+
+Data portofolio dan metrik risiko:
+${data}
+
+Tulis laporan risk management profesional dalam format Bridgewater mencakup:
+1. **Executive Risk Summary** — Rating risiko keseluruhan portofolio dengan justifikasi kuantitatif
+2. **Correlation Analysis** — Interpretasi korelasi antar holding, diversifikasi efektif atau tidak?
+3. **Sector Concentration Risk** — Breakdown konsentrasi sektor, apakah terlalu terekspos?
+4. **Geographic & Currency Risk** — Eksposur mata uang IDR, dampak depresiasi Rupiah
+5. **Interest Rate Sensitivity** — Sensitivitas tiap posisi terhadap perubahan BI Rate
+6. **Recession Stress Test** — Estimasi drawdown portofolio di 4 skenario stress
+7. **Liquidity Risk Assessment** — Rating likuiditas tiap holding, berapa hari untuk likuidasi?
+8. **Single Stock Risk & Position Sizing** — Apakah ada posisi yang terlalu besar? Rekomendasi sizing
+9. **Tail Risk Analysis** — CVaR, worst-case monthly, black swan scenario
+10. **Hedging Strategies** — 3 strategi hedging konkret untuk risiko terbesar
+11. **Rebalancing Recommendations** — Alokasi persentase spesifik yang disarankan
+
+Format akhir: Sertakan **Heat Map Summary Table** di awal yang menunjukkan setiap holding dengan rating warna (Hijau/Kuning/Merah) untuk setiap dimensi risiko.
+
+Gunakan bahasa Indonesia profesional. Sertakan angka dan statistik spesifik dari data.`,
+
   macro: (data) => `Kamu adalah macro strategist dari McKinsey dengan spesialisasi Indonesia macro analysis.
 Berikan analisis makro mendalam untuk kondisi ekonomi Indonesia berikut.
 
