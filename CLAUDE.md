@@ -20,10 +20,11 @@ No test suite is configured.
 
 ### Data Layer (`lib/`)
 
-`lib/sectors.ts` is the single data access point. It uses a **mock/live adapter pattern**: `USE_MOCK = !process.env.SECTORS_API_KEY`. When no API key is set, all functions return data from `lib/mock-data.ts` (5 demo tickers: BBCA, TLKM, ASII, BMRI, GOTO). Setting `SECTORS_API_KEY` in `.env.local` switches to the live [sectors.app](https://sectors.app) API with no UI changes needed.
+`lib/sectors.ts` is the single data access point. It uses a **mock/live adapter pattern**: `USE_MOCK = !process.env.SECTORS_API_KEY`. When no API key is set, all functions return data from `lib/mock-data.ts` (5 demo tickers: BBCA, TLKM, ASII, BMRI, GOTO). Setting `SECTORS_API_KEY` in `.env.local` switches to the live [sectors.app](https://sectors.app) API with no UI changes needed. Live mode uses **v1** endpoints for per-ticker data and **v2** for the screener. API responses are transformed to match the app's TypeScript interfaces via `transform*` functions in the same file.
 
 - `lib/indicators.ts` — server-side technical indicator calculations (RSI, MACD, Bollinger Bands, moving averages, support/resistance)
 - `lib/dcf.ts` — DCF valuation model (WACC calc, 5-year projections, sensitivity table)
+- `lib/portfolio-risk.ts` — portfolio-level risk calculations (correlation, stress test, tail risk, hedging)
 - `lib/sectors.ts` — data adapter (mock ↔ live); unknown tickers fall back to BBCA
 - `lib/mock-data.ts` — static demo data for 5 tickers across 3 sectors (Banking, Telecom, Consumer/Auto)
 
